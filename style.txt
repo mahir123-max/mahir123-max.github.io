@@ -1,0 +1,222 @@
+/* General Styling */
+body {
+    background-color: #1a1a2e;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #1a1a2e, #16213e, #0f3460);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    z-index: -1;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    animation: fadeInDown 1s ease-out;
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #00ffc3;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    padding-bottom: 5px;
+    position: relative;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    color: #00ffc3;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #f038ff;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after, nav ul li a.active::after {
+    width: 100%;
+}
+
+/* Main Content & Hero Section */
+main {
+    padding: 0 5%;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 80vh;
+    gap: 40px;
+}
+
+.hero-text {
+    flex: 1;
+    animation: slideInLeft 1s ease-out;
+}
+
+.hero-text h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.5em;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #00a8ff, #00ffc3, #f038ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-text p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    max-width: 600px;
+}
+
+.cta-button {
+    background-color: #00a8ff;
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cta-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 168, 255, 0.3);
+}
+
+.hero-avatar {
+    flex: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: zoomIn 1s ease-out;
+}
+
+.hero-avatar img {
+    max-width: 100%;
+    height: auto;
+    animation: floatAvatar 6s ease-in-out infinite;
+}
+
+/* Projects Section */
+.projects {
+    padding: 100px 0;
+    text-align: center;
+}
+
+.projects h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    animation: fadeIn 1s; /* Will be triggered by JS */
+    opacity: 0; /* Initially hidden for JS */
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.4s, box-shadow 0.4s;
+    opacity: 0; /* Initially hidden for JS */
+    transform: translateY(50px); /* Initially moved down for JS */
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.project-logo {
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+.project-card h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: #00ffc3;
+    margin-bottom: 10px;
+}
+
+/* Keyframe Animations */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes floatAvatar {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        min-height: auto;
+        padding: 50px 0;
+    }
+    .hero-text h1 {
+        font-size: 2.5em;
+    }
+}
